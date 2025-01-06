@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        html, body {
+        body {
           margin: 0;
           padding: 0;
-          width: 100%;
-          overflow-x: hidden; /* Prevent horizontal overflow */
+          font-size: 16px; /* Set base font size */
+          overflow-x: hidden;
         }
-      
+    
+        .hero {
+          width: 100%;
+          padding: 10px;
+        }
+    
         .container {
-          width: 50%; /* Set width to 50% */
-          margin: 0 auto; /* Center the content */
-          padding: 0; /* Remove extra padding */
+          width: 90%; /* Adjust width to fit screen */
+          margin: 0 auto;
+        }
+    
+        /* Make form fields and buttons responsive */
+        input, button {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+    
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 1.5rem; /* Adjust heading size for small screens */
+          }
+    
+          .button {
+            font-size: 1rem; /* Adjust button size for small screens */
+          }
         }
       </style>
+    
       
       
 
