@@ -5,12 +5,38 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+
+    <style>
+        /* Ensure fluid grid */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        /* Make images responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    
+        /* Responsive layout for small screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+    
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    
   </head>
   <body>
     <section class="hero is-primary is-bold">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Data Entry Form</h1>
+          <h1 class="title">Finance Tracker</h1>
         </div>
       </div>
     </section>
@@ -32,17 +58,14 @@
       </div>
 
 
+
+
       <!-- End Field -->
       
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button">
-            Submit
-          </button>
-        </div>
-        <div class="control">
-          <button class="button is-danger">Cancel</button>
+          <button class="button is-primary" type="submit" id="submit-button">Submit</button>
         </div>
       </div>
     </form>
