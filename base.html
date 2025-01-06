@@ -75,11 +75,35 @@
     ></div>
 
     <script>
+
+
+        let userId;
+
+        // Check if the userId cookie exists
+        if (!document.cookie.includes('userId=')) {
+            // Generate and set the userId cookie if it doesn't exist
+            userId = 'user_' + Math.random().toString(36).substring(2, 15);
+            document.cookie = `userId=${userId}; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/`;
+            console.log("Cookie set: userId=" + userId);
+        } else {
+            // If the cookie exists, get the userId from the cookie
+            userId = document.cookie.split('; ').find(row => row.startsWith('userId=')).split('=')[1];
+            console.log("userId already exists: " + userId);
+        }
+
+        // Append userId to FormData
+        formData.append("userId", userId);
+
+        
       document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
         document.getElementById("message").textContent = "Submitting..";
         document.getElementById("message").style.display = "block";
         document.getElementById("submit-button").disabled = true;
+        
+        
+        
+
 
         // Collect the form data
         var formData = new FormData(this);
