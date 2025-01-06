@@ -73,6 +73,11 @@
         document.getElementById("message").textContent = "Submitting..";
         document.getElementById("message").style.display = "block";
         document.getElementById("submit-button").disabled = true;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');  
+        console.log(username);
+
 
         // Collect the form data
         var formData = new FormData(this);
