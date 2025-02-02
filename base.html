@@ -44,10 +44,6 @@
           }
         }
       </style>
-    
-      
-      
-
   </head>
   <body>
     <section class="hero is-primary is-bold">
@@ -59,55 +55,46 @@
     </section>
 
     <!-- Start Field -->
-
-
     <form id="form" class="container m-4 pl-4" method="POST">
 
-    <div class="field">
+      <div class="field">
         <label class="label">Name</label>
         <div class="control">
-        <input
-            class="input"
-            type="text"
-            placeholder="Transaction Name"
-            name="Name"
-        />
-    </div>
-
+          <input class="input" type="text" placeholder="Transaction Name" name="Name" />
+        </div>
+      </div>
 
       <div class="field">
         <label class="label">Amount Spent</label>
         <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Your Amount Spent"
-            name="Amount Spent"
-          />
+          <input class="input" type="text" placeholder="Your Amount Spent" name="Amount Spent" />
         </div>
-        
-        <div class="field">
-          <label class="label">Category</label>
-          <div class="control">
-            <div class="buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
-              <button type="button" class="button is-small" value="Food" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Food n drinks</button>
-              <button type="button" class="button is-small" value="Transport" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Transport</button>
-              <button type="button" class="button is-small" value="Entertainment" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Entertainment</button>
-              <button type="button" class="button is-small" value="Groceries" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Groceries</button>
-              <button type="button" class="button is-small" value="Medical" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Medical</button>
-              <button type="button" class="button is-small" value="Jess" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Jess</button>
-            </div>
-            
+      </div>
+
+      <div class="field">
+        <label class="label">Category</label>
+        <div class="control">
+          <div class="buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
+            <button type="button" class="button is-small" value="Food" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Food n drinks</button>
+            <button type="button" class="button is-small" value="Transport" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Transport</button>
+            <button type="button" class="button is-small" value="Entertainment" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Entertainment</button>
+            <button type="button" class="button is-small" value="Groceries" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Groceries</button>
+            <button type="button" class="button is-small" value="Medical" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Medical</button>
+            <button type="button" class="button is-small" value="Jess" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Jess</button>
           </div>
         </div>
-          
-          
-      
+      </div>
 
-
-
-      <!-- End Field -->
-      
+      <div class="field">
+        <label class="label">Month</label>
+        <div class="control">
+          <div class="select">
+            <select id="month-dropdown">
+              <!-- Month options will be populated dynamically via JavaScript -->
+            </select>
+          </div>
+        </div>
+      </div>
 
       <div class="field is-grouped">
         <div class="control">
@@ -115,28 +102,18 @@
         </div>
       </div>
     </form>
+
     <div
       id="message"
-      style="
-        display: none;
-        margin: 20px;
-        font-weight: bold;
-        color: green;
-        padding: 8px;
-        background-color: beige;
-        border-radius: 4px;
-        border-color: aquamarine;
-      "
+      style="display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"
     ></div>
 
     <button type="button" onclick="window.location.href='history.html';" style="position: fixed; bottom: 30px; left: 0; width: 100%; font-size: 24px; padding: 30px; box-sizing: border-box;">Transaction History</button>
 
-
-
-
     <script>
-
       let selectedCategories = [];
+
+      // Toggle button selection
       function toggleSelection(button) {
         button.classList.toggle('is-active');
         selectedCategories = [];
@@ -145,43 +122,66 @@
           selectedCategories.push(btn.value);
         });
         console.log('Selected Categories:', selectedCategories); // You can use this array to submit or process the data
-        
       }
-      
+
+      // Populate the month dropdown
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentMonth = new Date().getMonth();
+        const months = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        const monthDropdown = document.getElementById("month-dropdown");
+        months.forEach((month, index) => {
+          const option = document.createElement("option");
+          option.value = index + 1; // Store month number (1-12)
+          option.textContent = month;
+          if (index === currentMonth) {
+            option.selected = true; // Set the current month as the default
+          }
+          monthDropdown.appendChild(option);
+        });
+      });
+
+      // Handle form submission
       document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
         document.getElementById("message").textContent = "Submitting..";
         document.getElementById("message").style.display = "block";
         document.getElementById("submit-button").disabled = true;
-        
+
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('username');  
         console.log(username);
-
-        
-
 
         // Collect the form data
         var formData = new FormData(this);
         var keyValuePairs = [];
         for (var pair of formData.entries()) {
           keyValuePairs.push(pair[0] + "=" + pair[1]);
-          
         }
 
-
-        
-        keyValuePairs.push("Username=" +username)
-
+        // Add the username and categories
+        keyValuePairs.push("Username=" + username);
         selectedCategories.join(",");
-        keyValuePairs.push("Category=" + selectedCategories)
-        
+        keyValuePairs.push("Category=" + selectedCategories);
+
+        // Get the selected month
+        let selectedMonth = document.getElementById("month-dropdown").value;
+        selectedMonth = parseInt(selectedMonth); // Convert to integer
+
+        const months = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        keyValuePairs.push("Month=" + months[selectedMonth - 1]);
+
 
         var formDataString = keyValuePairs.join("&");
 
-        console.log(formDataString)
-        
-
+        console.log(formDataString);
 
         // Send a POST request to your Google Apps Script
         fetch(
@@ -196,7 +196,6 @@
           }
         )
           .then(function (response) {
-            // Check if the request was successful
             if (response) {
               return response; // Assuming your script returns JSON response
             } else {
@@ -204,7 +203,6 @@
             }
           })
           .then(function (data) {
-            // Display a success message
             document.getElementById("message").textContent =
               "Data submitted successfully!";
             document.getElementById("message").style.display = "block";
@@ -219,7 +217,6 @@
             }, 2600);
           })
           .catch(function (error) {
-            // Handle errors, you can display an error message here
             console.error(error);
             document.getElementById("message").textContent =
               "An error occurred while submitting the form.";
