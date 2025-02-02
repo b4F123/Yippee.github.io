@@ -6,14 +6,14 @@
         body {
           margin: 0;
           padding: 0;
-          font-size: 16px; /* Set base font size */
+          font-size: 16px;
           overflow-x: hidden;
         }
 
         .button.is-active {
-          background-color: #4a90e2;  /* You can change this color */
-          color: white;               /* Change the text color if needed */
-          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds the pressed effect */
+          background-color: #4a90e2;
+          color: white;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
         }
     
         .hero {
@@ -22,12 +22,11 @@
         }
     
         .container {
-          width: 90%; /* Adjust width to fit screen */
+          width: 90%;
           margin: 0 auto;
         }
     
-        /* Make form fields and buttons responsive */
-        input, button {
+        input, button, select {
           width: 100%;
           padding: 10px;
           font-size: 1rem;
@@ -36,18 +35,14 @@
     
         @media (max-width: 768px) {
           h1 {
-            font-size: 1.5rem; /* Adjust heading size for small screens */
+            font-size: 1.5rem;
           }
     
           .button {
-            font-size: 1rem; /* Adjust button size for small screens */
+            font-size: 1rem;
           }
         }
       </style>
-    
-      
-      
-
   </head>
   <body>
     <section class="hero is-primary is-bold">
@@ -58,56 +53,54 @@
       </div>
     </section>
 
-    <!-- Start Field -->
-
-
     <form id="form" class="container m-4 pl-4" method="POST">
-
-    <div class="field">
+      <div class="field">
         <label class="label">Name</label>
         <div class="control">
-        <input
-            class="input"
-            type="text"
-            placeholder="Transaction Name"
-            name="Name"
-        />
-    </div>
-
+          <input class="input" type="text" placeholder="Transaction Name" name="Name" />
+        </div>
+      </div>
 
       <div class="field">
         <label class="label">Amount Spent</label>
         <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Your Amount Spent"
-            name="Amount Spent"
-          />
+          <input class="input" type="text" placeholder="Your Amount Spent" name="Amount Spent" />
         </div>
-        
-        <div class="field">
-          <label class="label">Category</label>
-          <div class="control">
-            <div class="buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
-              <button type="button" class="button is-small" value="Food" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Food n drinks</button>
-              <button type="button" class="button is-small" value="Transport" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Transport</button>
-              <button type="button" class="button is-small" value="Entertainment" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Entertainment</button>
-              <button type="button" class="button is-small" value="Groceries" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Groceries</button>
-              <button type="button" class="button is-small" value="Medical" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Medical</button>
-              <button type="button" class="button is-small" value="Jess" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Jess</button>
-            </div>
-            
+      </div>
+      
+      <div class="field">
+        <label class="label">Month</label>
+        <div class="control">
+          <select id="month-select" name="Month">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Category</label>
+        <div class="control">
+          <div class="buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
+            <button type="button" class="button is-small" value="Food" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Food n drinks</button>
+            <button type="button" class="button is-small" value="Transport" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Transport</button>
+            <button type="button" class="button is-small" value="Entertainment" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Entertainment</button>
+            <button type="button" class="button is-small" value="Groceries" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Groceries</button>
+            <button type="button" class="button is-small" value="Medical" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Medical</button>
+            <button type="button" class="button is-small" value="Jess" style="flex-basis: 30%; font-size: 1.2rem; height: 3rem;" onclick="toggleSelection(this)">Jess</button>
           </div>
         </div>
-          
-          
-      
-
-
-
-      <!-- End Field -->
-      
+      </div>
 
       <div class="field is-grouped">
         <div class="control">
@@ -115,26 +108,20 @@
         </div>
       </div>
     </form>
-    <div
-      id="message"
-      style="
-        display: none;
-        margin: 20px;
-        font-weight: bold;
-        color: green;
-        padding: 8px;
-        background-color: beige;
-        border-radius: 4px;
-        border-color: aquamarine;
-      "
-    ></div>
+
+    <div id="message" style="display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"></div>
 
     <button type="button" onclick="window.location.href='history.html';" style="position: fixed; bottom: 30px; left: 0; width: 100%; font-size: 24px; padding: 30px; box-sizing: border-box;">Transaction History</button>
 
-
-
-
     <script>
+      function getCurrentMonth() {
+        const date = new Date();
+        return date.toLocaleString('default', { month: 'long' });
+      }
+      
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("month-select").value = getCurrentMonth();
+      });
 
       let selectedCategories = [];
       function toggleSelection(button) {
@@ -144,88 +131,8 @@
         buttons.forEach((btn) => {
           selectedCategories.push(btn.value);
         });
-        console.log('Selected Categories:', selectedCategories); // You can use this array to submit or process the data
-        
+        console.log('Selected Categories:', selectedCategories);
       }
-      
-      document.getElementById("form").addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent the default form submission
-        document.getElementById("message").textContent = "Submitting..";
-        document.getElementById("message").style.display = "block";
-        document.getElementById("submit-button").disabled = true;
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get('username');  
-        console.log(username);
-
-        
-
-
-        // Collect the form data
-        var formData = new FormData(this);
-        var keyValuePairs = [];
-        for (var pair of formData.entries()) {
-          keyValuePairs.push(pair[0] + "=" + pair[1]);
-          
-        }
-
-
-        
-        keyValuePairs.push("Username=" +username)
-
-        selectedCategories.join(",");
-        keyValuePairs.push("Category=" + selectedCategories)
-        
-
-        var formDataString = keyValuePairs.join("&");
-
-        console.log(formDataString)
-        
-
-
-        // Send a POST request to your Google Apps Script
-        fetch(
-          "https://script.google.com/macros/s/AKfycbyWQhv7MTlXkfF0uZHXxbHjgvlXcPsbZFYAKs01c34Z1i1perHSnd_SYKk0XFwwheypqg/exec",
-          {
-            redirect: "follow",
-            method: "POST",
-            body: formDataString,
-            headers: {
-              "Content-Type": "text/plain;charset=utf-8",
-            },
-          }
-        )
-          .then(function (response) {
-            // Check if the request was successful
-            if (response) {
-              return response; // Assuming your script returns JSON response
-            } else {
-              throw new Error("Failed to submit the form.");
-            }
-          })
-          .then(function (data) {
-            // Display a success message
-            document.getElementById("message").textContent =
-              "Data submitted successfully!";
-            document.getElementById("message").style.display = "block";
-            document.getElementById("message").style.backgroundColor = "green";
-            document.getElementById("message").style.color = "beige";
-            document.getElementById("submit-button").disabled = false;
-            document.getElementById("form").reset();
-
-            setTimeout(function () {
-              document.getElementById("message").textContent = "";
-              document.getElementById("message").style.display = "none";
-            }, 2600);
-          })
-          .catch(function (error) {
-            // Handle errors, you can display an error message here
-            console.error(error);
-            document.getElementById("message").textContent =
-              "An error occurred while submitting the form.";
-            document.getElementById("message").style.display = "block";
-          });
-      });
     </script>
   </body>
 </html>
