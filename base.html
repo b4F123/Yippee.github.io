@@ -104,7 +104,7 @@
 
       <div class="field is-grouped" style="padding: 20px;">
         <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button" disabled style="font-size: 1.5rem; padding: 15px 30px; height: 60px;">Submit</button>
+            <button class="button is-primary" type="submit" id="submit-button" style="font-size: 1.5rem; padding: 15px 30px; height: 60px;">Submit</button>
         </div>
       </div>
       
@@ -120,19 +120,7 @@
       let transactionType = '';
 
       // Enable submit button if all fields are filled
-      function checkFormCompletion() {
-        const name = document.getElementById("name-field").value;
-        const amountSpent = document.getElementById("amount-field").value;
-        const selectedType = transactionType;
-        const selectedCategory = selectedCategories.length > 0;
-
-        const submitButton = document.getElementById("submit-button");
-        if (name && amountSpent && selectedType && selectedCategory) {
-          submitButton.disabled = false;
-        } else {
-          submitButton.disabled = true;
-        }
-      }
+      
 
       // Toggle button selection
       function toggleSelection(button) {
@@ -143,7 +131,7 @@
           selectedCategories.push(btn.value);
         });
         console.log('Selected Categories:', selectedCategories);
-        checkFormCompletion();
+        
       }
 
       // Toggle Expense/Income selection
@@ -153,7 +141,7 @@
         button.classList.add('is-active');
         transactionType = button.value;
         console.log('Transaction Type:', transactionType);
-        checkFormCompletion();
+        
       }
 
       // Populate the month dropdown
